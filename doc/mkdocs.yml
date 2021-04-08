@@ -1,0 +1,16 @@
+site_name: Franzininho WiFi - ESP-IDF
+site_favicon: img/favicon.ico
+
+nav:
+    - Primeiros passos: index.md
+    - Exemplos:
+        - Entrada digital: exemplos/entrada_digital.md
+        - Saída Digital: exemplos/saida_digital.md
+    - Sobre: about.md
+
+
+theme:
+    name: readthedocs
+    highlightjs: true
+    hljs_languages:
+        - c
