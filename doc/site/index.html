@@ -54,13 +54,27 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#introducao">Introdução</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#instalacao-do-esp-idf">Instalação do ESP-IDF</a>
+    <li class="toctree-l2"><a class="reference internal" href="#passo-1-instalacao-dos-pre-requisitos">Passo 1 - Instalação dos pré-requisitos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#passo-2-instalacao-do-esp-idf">Passo 2 - Instalação do ESP-IDF</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#extensao-esp-idf-para-vscode">Extensão ESP-IDF para VSCode</a>
+    <li class="toctree-l3"><a class="reference internal" href="#linux-e-macos">Linux e macOS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#instalando-o-esp-idf-e-ferramentas">Instalando O ESP-IDF e ferramentas</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#windows_1">Windows</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#linux-e-macos_1">Linux e macOS</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#hello-world">Hello, World!</a>
+    <li class="toctree-l3"><a class="reference internal" href="#configurando-as-variaveis-de-ambientes">Configurando as variáveis de ambientes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#passo-3-criando-um-novo-projeto">Passo 3 - Criando um novo projeto</a>
     </li>
     </ul>
                     </li>
@@ -100,6 +114,9 @@
     <li>Primeiros passos</li>
     <li class="wy-breadcrumbs-aside">
       
+        <a href="https://github.com/Franzininho/exemplos-esp-idf/edit/master/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
     </li>
   </ul>
   
@@ -109,15 +126,54 @@
             <div class="section">
               
                 <h1 id="primeiros-passos">Primeiros Passos</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra tincidunt laoreet. Ut consectetur tellus eu lobortis finibus. Nulla pulvinar neque sed posuere pellentesque. Sed at mattis ligula. Suspendisse scelerisque odio eu dolor tristique, eget tempor lorem accumsan. Nulla a ipsum nec felis varius accumsan in nec mi. Integer eget magna eget sem accumsan dignissim dapibus in odio. Aliquam fermentum, eros at ultrices iaculis, enim nunc bibendum tortor, ut dictum diam orci eu erat. Suspendisse scelerisque magna tempus elementum laoreet. Nunc eget convallis odio. Suspendisse potenti.</p>
+<p>Este documento tem como objetivo ajudá-lo a configurar o ESP-IDF (Espressif IoT Development Framework) para trabalhar com a Franzininho WiFi que usa o ESP32-S2 da Espressif.</p>
+<p>Ao final, faremos um exemplo simples para compilar, gravar e monitorar usando o ESP-IDF assim garantiremos que tudo estará funcionando.</p>
 <h2 id="introducao">Introdução</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra tincidunt laoreet. Ut consectetur tellus eu lobortis finibus. Nulla pulvinar neque sed posuere pellentesque. Sed at mattis ligula. Suspendisse scelerisque odio eu dolor tristique, eget tempor lorem accumsan. Nulla a ipsum nec felis varius accumsan in nec mi. Integer eget magna eget sem accumsan dignissim dapibus in odio. Aliquam fermentum, eros at ultrices iaculis, enim nunc bibendum tortor, ut dictum diam orci eu erat. Suspendisse scelerisque magna tempus elementum laoreet. Nunc eget convallis odio. Suspendisse potenti.</p>
-<h2 id="instalacao-do-esp-idf">Instalação do ESP-IDF</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra tincidunt laoreet. Ut consectetur tellus eu lobortis finibus. Nulla pulvinar neque sed posuere pellentesque. Sed at mattis ligula. Suspendisse scelerisque odio eu dolor tristique, eget tempor lorem accumsan. Nulla a ipsum nec felis varius accumsan in nec mi. Integer eget magna eget sem accumsan dignissim dapibus in odio. Aliquam fermentum, eros at ultrices iaculis, enim nunc bibendum tortor, ut dictum diam orci eu erat. Suspendisse scelerisque magna tempus elementum laoreet. Nunc eget convallis odio. Suspendisse potenti.</p>
-<h3 id="extensao-esp-idf-para-vscode">Extensão ESP-IDF para VSCode</h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra tincidunt laoreet. Ut consectetur tellus eu lobortis finibus. Nulla pulvinar neque sed posuere pellentesque. Sed at mattis ligula. Suspendisse scelerisque odio eu dolor tristique, eget tempor lorem accumsan. Nulla a ipsum nec felis varius accumsan in nec mi. Integer eget magna eget sem accumsan dignissim dapibus in odio. Aliquam fermentum, eros at ultrices iaculis, enim nunc bibendum tortor, ut dictum diam orci eu erat. Suspendisse scelerisque magna tempus elementum laoreet. Nunc eget convallis odio. Suspendisse potenti.</p>
-<h2 id="hello-world">Hello, World!</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra tincidunt laoreet. Ut consectetur tellus eu lobortis finibus. Nulla pulvinar neque sed posuere pellentesque. Sed at mattis ligula. Suspendisse scelerisque odio eu dolor tristique, eget tempor lorem accumsan. Nulla a ipsum nec felis varius accumsan in nec mi. Integer eget magna eget sem accumsan dignissim dapibus in odio. Aliquam fermentum, eros at ultrices iaculis, enim nunc bibendum tortor, ut dictum diam orci eu erat. Suspendisse scelerisque magna tempus elementum laoreet. Nunc eget convallis odio. Suspendisse potenti.</p>
+<p>Para essa configuração, vamos instalar o ESP-IDF e usá-lo através de linha de comando. Caso você queira usar o IDF integrado a ambientes de desenvolvimento integrado (IDE) como VScode e Eclipse, confira os seguintes links:
+- <a href="https://github.com/espressif/idf-eclipse-plugin">Eclipse Plugin</a>
+- <a href="https://github.com/espressif/vscode-esp-idf-extension">VS Code Extension</a></p>
+<p>Você poderá instar o ESP-IDF no seu sistemas operacional preferido (Linux, Windows, macOS).</p>
+<p>Para a experiência completa, você precisará de uma placa Franzininho WiFi, Computador: com Windows, Linux ou macOS</p>
+<h2 id="passo-1-instalacao-dos-pre-requisitos">Passo 1 - Instalação dos pré-requisitos</h2>
+<p>Algumas ferramentas precisam ser instaladas no computador antes de prosseguir para as próximas etapas. Siga os links abaixo para obter as instruções para o seu sistema operacional:
+- <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/windows-setup.html">Windows</a>
+- <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/linux-setup.html">Linux</a>
+- <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/macos-setup.html">Mac OS</a></p>
+<p>É muito importante a instalação de todos os pré-requisitos.</p>
+<h2 id="passo-2-instalacao-do-esp-idf">Passo 2 - Instalação do ESP-IDF</h2>
+<p>Nessa etapa vamos instalar o ESP-IDF e conjunto de bibliotecas mantidas pela Espressif no repositório do <a href="https://github.com/espressif/esp-idf">ESP-IDF</a></p>
+<p>O ESP-IDF é o framework oficial da Espressif para o desenvolvimento com toda a família ESP32.O procedimento apresentado aqui servirá para trabalhar com toda a família ESP32. Porém vamos dar foco ao ESP32-S2 que é usado na Franzininho WiFi.</p>
+<h3 id="linux-e-macos">Linux e macOS</h3>
+<p>Abra o terminal e execute:</p>
+<pre><code class="language-console">mkdir -p ~/esp
+cd ~/esp
+git clone --recursive https://github.com/espressif/esp-idf.git
+</code></pre>
+<p>O ESP-IDF será baixado no seguinte repositório <code>~/esp/esp-idf</code>.</p>
+<h3 id="windows">Windows</h3>
+<p>Além de instalar as ferramentas, o <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/windows-setup.html#get-started-windows-tools-installer">ESP-IDF Tools Installer para Windows</a> apresentado na Etapa 1 também pode baixar uma cópia do ESP-IDF. Dessa forma você não precisará baixar o ESP-IDF agora, se já tiver baixado anteriormente junto aos pré-requisitos</p>
+<p>Se desejar fazer o download do ESP-IDF sem a ajuda do ESP-IDF Tools Installer, consulte <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/windows-setup-scratch.html#get-esp-idf-windows-command-line">estas instruções</a>.</p>
+<h3 id="instalando-o-esp-idf-e-ferramentas">Instalando O ESP-IDF e ferramentas</h3>
+<p>Além do ESP-IDF, você também precisa instalar as ferramentas usadas pelo ESP-IDF, como compilador, depurador, pacotes Python, etc.</p>
+<h4 id="windows_1">Windows</h4>
+<p>O ESP-IDF Tools Installer para Windows apresentado no passo 1 instala todas as ferramentas necessárias.</p>
+<p>Se você deseja instalar as ferramentas sem a ajuda do ESP-IDF Tools Installer, abra o Prompt de Comando e siga estas etapas:</p>
+<pre><code class="language-console">cd %userprofile%\esp\esp-idf
+install.bat
+</code></pre>
+<p>Ou no Windows PowerShell</p>
+<pre><code class="language-console">cd ~/esp/esp-idf
+./install.ps1
+</code></pre>
+<h4 id="linux-e-macos_1">Linux e macOS</h4>
+<p>No Linux ou macOS há um script para instalação.Abra o terminal e execute:</p>
+<pre><code class="language-console">cd ~/esp/esp-idf
+./install.sh
+</code></pre>
+<h3 id="configurando-as-variaveis-de-ambientes">Configurando as variáveis de ambientes</h3>
+<p>Windows</p>
+<p>Linux e macOS</p>
+<h2 id="passo-3-criando-um-novo-projeto">Passo 3 - Criando um novo projeto</h2>
               
             </div>
           </div>
@@ -151,6 +207,8 @@
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+          <a href="https://github.com/Franzininho/exemplos-esp-idf/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
       
       
         <span style="margin-left: 15px"><a href="exemplos/entrada_digital/" style="color: #fcfcfc">Next &raquo;</a></span>
@@ -171,5 +229,5 @@
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-04-08 02:18:12.949349+00:00
+Build Date UTC : 2021-04-10 21:40:11.655566+00:00
 -->

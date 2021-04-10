@@ -1,6 +1,8 @@
 site_name: Franzininho WiFi - ESP-IDF
 site_favicon: img/favicon.ico
 
+repo_url: https://github.com/Franzininho/exemplos-esp-idf
+
 nav:
     - Primeiros passos: index.md
     - Exemplos:
