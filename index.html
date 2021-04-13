@@ -28,6 +28,7 @@
   <script src="js/modernizr-2.8.3.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/console.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -71,10 +72,38 @@
         </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#configurando-as-variaveis-de-ambientes">Configurando as variáveis de ambientes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#windows_2">Windows</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#linux-e-macos_2">Linux e macOS</a>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#passo-3-criando-um-novo-projeto">Passo 3 - Criando um novo projeto</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#copiando-um-projeto-exemplo">Copiando um projeto exemplo</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#windows_3">Windows</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#linux-e-macos_3">Linux e macOS</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracao">Configuração</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#windows_4">Windows</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#linux-e-macos_4">Linux e macOS</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#compilando-o-projeto-em-modo-dfu">Compilando o projeto em modo DFU</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#compilacao-gravacao-e-monitor-em-modo-normal">Compilação, gravação e monitor em modo normal</a>
+    </li>
+        </ul>
     </li>
     </ul>
                     </li>
@@ -127,22 +156,26 @@
               
                 <h1 id="primeiros-passos">Primeiros Passos</h1>
 <p>Este documento tem como objetivo ajudá-lo a configurar o ESP-IDF (Espressif IoT Development Framework) para trabalhar com a Franzininho WiFi que usa o ESP32-S2 da Espressif.</p>
-<p>Ao final, faremos um exemplo simples para compilar, gravar e monitorar usando o ESP-IDF assim garantiremos que tudo estará funcionando.</p>
+<p>Ao final, faremos um exemplo simples para compilar, gravar e monitorar usando o ESP-IDF, assim, garantiremos que tudo estará funcionando.</p>
 <h2 id="introducao">Introdução</h2>
-<p>Para essa configuração, vamos instalar o ESP-IDF e usá-lo através de linha de comando. Caso você queira usar o IDF integrado a ambientes de desenvolvimento integrado (IDE) como VScode e Eclipse, confira os seguintes links:
-- <a href="https://github.com/espressif/idf-eclipse-plugin">Eclipse Plugin</a>
-- <a href="https://github.com/espressif/vscode-esp-idf-extension">VS Code Extension</a></p>
+<p>Para essa configuração, vamos instalar o ESP-IDF e usá-lo através de linha de comando. Caso você queira usar o IDF integrado a ambientes de desenvolvimento integrado (IDE) como VScode e Eclipse, confira os seguintes links:</p>
+<ul>
+<li><a href="https://github.com/espressif/idf-eclipse-plugin">Eclipse Plugin</a></li>
+<li><a href="https://github.com/espressif/vscode-esp-idf-extension">VS Code Extension</a></li>
+</ul>
 <p>Você poderá instar o ESP-IDF no seu sistemas operacional preferido (Linux, Windows, macOS).</p>
 <p>Para a experiência completa, você precisará de uma placa Franzininho WiFi, Computador: com Windows, Linux ou macOS</p>
 <h2 id="passo-1-instalacao-dos-pre-requisitos">Passo 1 - Instalação dos pré-requisitos</h2>
-<p>Algumas ferramentas precisam ser instaladas no computador antes de prosseguir para as próximas etapas. Siga os links abaixo para obter as instruções para o seu sistema operacional:
-- <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/windows-setup.html">Windows</a>
-- <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/linux-setup.html">Linux</a>
-- <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/macos-setup.html">Mac OS</a></p>
+<p>Algumas ferramentas precisam ser instaladas no computador antes de prosseguir para as próximas etapas. Siga os links abaixo para obter as instruções para o seu sistema operacional:</p>
+<ul>
+<li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/windows-setup.html">Windows</a></li>
+<li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/linux-setup.html">Linux</a></li>
+<li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/macos-setup.html">Mac OS</a></li>
+</ul>
 <p>É muito importante a instalação de todos os pré-requisitos.</p>
 <h2 id="passo-2-instalacao-do-esp-idf">Passo 2 - Instalação do ESP-IDF</h2>
-<p>Nessa etapa vamos instalar o ESP-IDF e conjunto de bibliotecas mantidas pela Espressif no repositório do <a href="https://github.com/espressif/esp-idf">ESP-IDF</a></p>
-<p>O ESP-IDF é o framework oficial da Espressif para o desenvolvimento com toda a família ESP32.O procedimento apresentado aqui servirá para trabalhar com toda a família ESP32. Porém vamos dar foco ao ESP32-S2 que é usado na Franzininho WiFi.</p>
+<p>Nessa etapa vamos instalar o ESP-IDF e conjunto de ferramentas e bibliotecas. Vamos usar o código mantido pela Espressif no repositório do <a href="https://github.com/espressif/esp-idf">ESP-IDF</a></p>
+<p>O ESP-IDF é o framework oficial da Espressif para o desenvolvimento de aplicações parar toda a família ESP32. O procedimento apresentado aqui servirá para trabalhar com toda a família ESP32. Porém vamos dar foco ao ESP32-S2 que é usado na Franzininho WiFi.</p>
 <h3 id="linux-e-macos">Linux e macOS</h3>
 <p>Abra o terminal e execute:</p>
 <pre><code class="language-console">mkdir -p ~/esp
@@ -171,9 +204,101 @@ install.bat
 ./install.sh
 </code></pre>
 <h3 id="configurando-as-variaveis-de-ambientes">Configurando as variáveis de ambientes</h3>
-<p>Windows</p>
-<p>Linux e macOS</p>
+<p>As ferramentas instaladas ainda não foram adicionadas à variável de ambiente PATH. Para tornar as ferramentas utilizáveis na linha de comando, algumas variáveis de ambiente devem ser definidas. ESP-IDF fornece alguns scripts que ajudam nesse processo.</p>
+<h4 id="windows_2">Windows</h4>
+<p>O ESP-IDF Tools Installer para Windows cria um atalho “ESP-IDF Command Prompt” no menu Iniciar. Este atalho abre o Prompt de Comando e configura todas as variáveis de ambiente necessárias. Você pode abrir este atalho e prosseguir para a próxima etapa.</p>
+<p>Caso não funcione e você precise configurar manualmente, execute os seguintes comandos:</p>
+<p><strong>Prompt de Comando</strong>:</p>
+<pre><code class="language-console">%userprofile%\esp\esp-idf\export.bat
+</code></pre>
+<p><strong>Windows PowerShell</strong>:</p>
+<pre><code class="language-console">.$HOME/esp/esp-idf/export.ps1
+</code></pre>
+<h4 id="linux-e-macos_2">Linux e macOS</h4>
+<p>No terminal execute:</p>
+<pre><code class="language-console">. $HOME/esp/esp-idf/export.sh
+</code></pre>
+<div class="admonition important">
+<p class="admonition-title"> </p>
+<p>Você precisa fazer isso toda vez que iniciar o terminal para usar o ESP-IDF.</p>
+</div>
 <h2 id="passo-3-criando-um-novo-projeto">Passo 3 - Criando um novo projeto</h2>
+<p>Agora que já temos as ferramentas instaladas, vamos fazer um exemplo para validar o funcionamento das mesmas. Vamos executar o exemplo blink que já vem no IDF.</p>
+<h3 id="copiando-um-projeto-exemplo">Copiando um projeto exemplo</h3>
+<p>Vamos copiar o projeto blink para preservarmos o exemplo presente na pasta do IDF:</p>
+<h4 id="windows_3">Windows</h4>
+<pre><code class="language-console">cd %userprofile%\esp
+xcopy /e /i %IDF_PATH%\examples\get-started\blink blink
+</code></pre>
+<h4 id="linux-e-macos_3">Linux e macOS</h4>
+<pre><code class="language-console">cd ~/esp
+cp -r $IDF_PATH/examples/get-started/blink .
+</code></pre>
+<p>Fique a vontade para testar os outros exemplos também.</p>
+<p>O sistema de compilação ESP-IDF não oferece suporte a espaços nos caminhos para o ESP-IDF ou para projetos.</p>
+<h3 id="configuracao">Configuração</h3>
+<p>Agora vamos configurar o target para qual será compilado e já fazer uma configuração no menuconfig. No nosso caso vamos trabalhar com o ESP32-S2:</p>
+<h4 id="windows_4">Windows</h4>
+<pre><code class="language-console">cd %userprofile%\esp\blink
+idf.py set-target esp32s2
+idf.py menuconfig
+</code></pre>
+<h4 id="linux-e-macos_4">Linux e macOS</h4>
+<pre><code class="language-console">cd ~/esp/blink
+idf.py set-target esp32s2
+idf.py menuconfig
+</code></pre>
+<p>Será aberto o menuconfig:
+<img alt="menuconfig" src="img/primeiros-passos-img/1.png" /></p>
+<p>Acesse a opção Component config ---&gt;
+<img alt="menuconfig" src="img/primeiros-passos-img/2.png" /></p>
+<p>Em seguida ESP System Settings  ---&gt;
+<img alt="menuconfig" src="img/primeiros-passos-img/3.png" /></p>
+<p>Agora selecione Channel for console output (Default: UART0)  ---&gt;
+<img alt="menuconfig" src="img/primeiros-passos-img/5.png" /></p>
+<p>E por fim, selecione (X) USB CDC:
+<img alt="menuconfig" src="img/primeiros-passos-img/4.png" /></p>
+<p>Salve(S), Enter, enter, Saia do menu(ESC)</p>
+<p>Essa configuração permitirá que usemos a USB no próximo upload.</p>
+<div class="admonition important">
+<p class="admonition-title"> </p>
+<p>Sempre que iniciar um projeto novo faça essas configuração para que continue usando a USB.</p>
+</div>
+<p>Para mais detalhes acesse:</p>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/zg9IMDaoImA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="compilando-o-projeto-em-modo-dfu">Compilando o projeto em modo DFU</h3>
+<p>A primeira compilação nós vamos fazer usando o modo DFU, que já vem por padrão no ESP32-S2 permitindo o upload através da USB:</p>
+<p>Para crie a imagem DFU:</p>
+<pre><code class="language-console">idf.py dfu
+</code></pre>
+<p>A primeira compilação pode demorar um pouco. Da até pra ir pegar um café ;)</p>
+<p>Após a compilação, conecte a Franzininho WiFi no computador. Antes de fazermos o upload é necessario entrar no modo DFU. Para entrar no modo DFU pressione as teclas na seguinte sequencia:</p>
+<ol>
+<li>pressione e segure a tecla BOOT</li>
+<li>pressione rapidamente e solte a tecla presente</li>
+<li>solte a tecla BOOT</li>
+</ol>
+<p>Dessa forma a placa entrará no modo DFU e poderá receber o firmware através da USB.</p>
+<p>Para fazer a gravação, digite:</p>
+<pre><code class="language-console">idf.py dfu-flash
+</code></pre>
+<p>Caso tenha permissão de acesso a porta USB, acesse esse <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/api-guides/dfu.html#udev-rule-linux-only">link com as instruções de configurações</a></p>
+<p>Após alguns segundos a placa estará gravada.</p>
+<h3 id="compilacao-gravacao-e-monitor-em-modo-normal">Compilação, gravação e monitor em modo normal</h3>
+<p>Agora você poderá compilar, gravar e monitorar usando a porta USB. Esse processo é identico ao que fazemos para desenvolver com o ESP32:</p>
+<p>Compilar:</p>
+<pre><code class="language-console">idf.py build
+</code></pre>
+<p>Gravar:</p>
+<pre><code class="language-console">idf.py -p PORT [-b BAUD] flash
+</code></pre>
+<p>Monitorar:</p>
+<pre><code class="language-console">idf.py -p /dev/ttyUSB0 monitor
+</code></pre>
+<p>Maravilha, você configurou o ambiente para trabalhar com o ESP-IDF.</p>
+<p>Caso queira trabalhar com a extensão para VSCODE, confira o video:</p>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/rxMg_zxO0q0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               
             </div>
           </div>
@@ -229,5 +354,5 @@ install.bat
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-04-10 21:40:11.655566+00:00
+Build Date UTC : 2021-04-13 02:30:00.825495+00:00
 -->
