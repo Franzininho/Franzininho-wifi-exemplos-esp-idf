@@ -194,7 +194,7 @@ idf.py dfu
 
 A primeira compilação pode demorar um pouco. Da até pra ir pegar um café ;)
 
-Após a compilação, conecte a Franzininho WiFi no computador. Antes de fazermos o upload é necessario entrar no modo DFU. Para entrar no modo DFU pressione as teclas na seguinte sequencia:
+Após a compilação, conecte a Franzininho WiFi no computador. Antes de fazermos o upload é necessário entrar no modo DFU. Para entrar no modo DFU pressione as teclas na seguinte sequencia:
 
 1. pressione e segure a tecla BOOT
 2. pressione rapidamente e solte a tecla presente
@@ -212,7 +212,7 @@ Após alguns segundos a placa estará gravada.
 
 ### Compilação, gravação e monitor em modo normal
 
-Agora você poderá compilar, gravar e monitorar usando a porta USB. Esse processo é identico ao que fazemos para desenvolver com o ESP32:
+Agora você poderá compilar, gravar e monitorar usando a porta USB. Esse processo é idêntico ao que fazemos para desenvolver com o ESP32:
 
 Compilar:
 ```console
