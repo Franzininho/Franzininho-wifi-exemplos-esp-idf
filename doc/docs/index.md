@@ -39,7 +39,7 @@ Algumas ferramentas precisam ser instaladas no computador antes de prosseguir pa
 
 Nessa etapa vamos instalar o ESP-IDF e conjunto de ferramentas e bibliotecas. Vamos usar o código mantido pela Espressif no repositório do [ESP-IDF](https://github.com/espressif/esp-idf)
 
-O ESP-IDF é o framework oficial da Espressif para o desenvolvimento de aplicações parar toda a família ESP32. O procedimento apresentado aqui servirá para trabalhar com toda a família ESP32. Porém vamos dar foco ao ESP32-S2 que é usado na Franzininho WiFi.
+O ESP-IDF é o framework oficial da Espressif para o desenvolvimento de aplicações parar toda a família ESP32. O procedimento apresentado aqui servirá para trabalhar com toda a família ESP32. Porém, vamos dar foco ao ESP32-S2 que é usado na Franzininho WiFi.
 
 ### Linux e macOS
 
