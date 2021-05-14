@@ -4,7 +4,7 @@ summary: Este documento tem como objetivo ajudá-lo a configurar o ESP-IDF
 authors:
     - Fábio Souza
 date: 2021-04-12
-some_url: https://example.com
+some_url: https://franzininho.github.io/exemplos-esp-idf/
 ---
 
 # Primeiros Passos
@@ -21,7 +21,7 @@ Para essa configuração, vamos instalar o ESP-IDF e usá-lo através de linha d
 - [VS Code Extension](https://github.com/espressif/vscode-esp-idf-extension)
 
 
-Você poderá instar o ESP-IDF no seu sistemas operacional preferido (Linux, Windows, macOS).
+Você poderá instalar o ESP-IDF no seu sistema operacional preferido (Linux, Windows, macOS).
 
 Para a experiência completa, você precisará de uma placa Franzininho WiFi, Computador: com Windows, Linux ou macOS
 
@@ -53,7 +53,7 @@ O ESP-IDF será baixado no seguinte repositório `~/esp/esp-idf`.
 
 ### Windows
 
-Além de instalar as ferramentas, o [ESP-IDF Tools Installer para Windows](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/windows-setup.html#get-started-windows-tools-installer) apresentado na Etapa 1 também pode baixar uma cópia do ESP-IDF. Dessa forma você não precisará baixar o ESP-IDF agora, se já tiver baixado anteriormente junto aos pré-requisitos
+Além de instalar as ferramentas, o [ESP-IDF Tools Installer para Windows](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/windows-setup.html#get-started-windows-tools-installer) apresentado no passo 1 ele também baixa uma cópia do ESP-IDF. Dessa forma você não precisará baixar o ESP-IDF agora, se já tiver baixado anteriormente junto aos pré-requisitos.
 
 Se desejar fazer o download do ESP-IDF sem a ajuda do ESP-IDF Tools Installer, consulte [estas instruções](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/windows-setup-scratch.html#get-esp-idf-windows-command-line).
 
@@ -175,7 +175,7 @@ Salve(S), Enter, enter, Saia do menu(ESC)
 Essa configuração permitirá que usemos a USB no próximo upload.
 
 !!! important " "
-    Sempre que iniciar um projeto novo faça essas configuração para que continue usando a USB.
+    Sempre que iniciar um projeto novo faça essas configuração para que continue usando a USB como interface de programação.
 
 
 Para mais detalhes acesse:
@@ -226,7 +226,6 @@ Monitorar:
 ```console
 idf.py -p /dev/ttyUSB0 monitor
 ```
-
 
 Maravilha, você configurou o ambiente para trabalhar com o ESP-IDF.
 

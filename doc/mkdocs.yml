@@ -16,7 +16,6 @@ theme:
     highlightjs: true
     hljs_languages:
         - c
-        - console
 
 
 markdown_extensions:
