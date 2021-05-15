@@ -1,1 +1,0 @@
-# Saída digital
