@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  
+  <title>Hello World! ESP _IDF - Franzininho WiFi - ESP-IDF</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Hello World! ESP _IDF";
+    var mkdocs_page_input_path = "0x02-entrada-digital.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Franzininho WiFi - ESP-IDF</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Primeiros passos</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../0x01-Hello-world/">Hello, World"</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Franzininho WiFi - ESP-IDF</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Hello World! ESP _IDF</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/Franzininho/exemplos-esp-idf/edit/master/docs/0x02-entrada-digital.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Seguindo nas aplicações com o ESP-IDF naa placa Franzininho WiFi vamos dar continuidade aos trabalhos com o periférico de Entrada/Saída de Propósito Geral ou do inglês General Purpose Input/Output (GPIO) . O objetivo deste texto é apresentar um exemplo de projeto para configurar os pinos como entrada digital.  Ao final, estaremos preparados para manipular tanto as saídas digitais, vista anteriormente, quanto às entradas de digitais.</p>
+<h2 id="recursos-necessarios">Recursos Necessários</h2>
+<p>Os materiais necessários para realizar esse exemplo são:</p>
+<ul>
+<li>Placa Franzininho WiFi;</li>
+<li>Protoboard;</li>
+<li>Botão ou chave táctil;</li>
+<li>LED;</li>
+<li>Resistor de 220 ou 330 Ohm;</li>
+<li>Cabos Jumpers;</li>
+<li>Computador com ESP-IDF instalado e configurado.</li>
+</ul>
+<h2 id="recursos-necessarios_1"><strong>Recursos Necessários</strong></h2>
+<p>Os materiais necessários para realizar esse exemplo são:</p>
+<ul>
+<li>Placa Franzininho WiFi;</li>
+<li>Protoboard;</li>
+<li>Botão ou chave táctil;</li>
+<li>LED;</li>
+<li>Resistor de 220 ou 330 Ohm;</li>
+<li>Cabos Jumpers;</li>
+<li>Computador com ESP-IDF instalado e configurado.</li>
+</ul>
+<h2 id="desenvolvimento"><strong>Desenvolvimento</strong></h2>
+<p>Nesse artigo vamos apresentar um exemplo de projeto utilizando as duas funções do periférico GPIO: entrada digital e saída digital. Na entrada digital vamos realizar a leitura do botão táctil e armazenar seu estado em uma variável que irá interagir com o monitor e um LED externo, atuando como uma saída digital que irá nos indicar o estado atual do botão.</p>
+<p>O programa desenvolvido possibilita utilizar duas topologias de circuito : <a href="https://www.embarcados.com.br/como-dimensionar-resistores-de-pull-up/"><strong>pull up</strong></a> ou <a href="https://www.embarcados.com.br/resistor-de-pull-down/"><strong>pull down</strong></a>, para mais informações sobre essas topologias acesse os links referente a cada circuito. Nesse exemplo de projeto iremos utilizar a topologia com o pull up interno do processador, desta forma deve-se observar os comentários ao longo do código a fim de habilitar ou desabilitar as topologias de circuito.</p>
+<p>Na placa Franzininho WiFI temos 38 pinos programáveis com o periférico GPIO, encorajamos aos leitores que alterem o código da forma como achar necessário e praticar a codificação do programa a fim de consolidar o conhecimento adquirido.</p>
+<h3 id="esquematico"><strong>Esquemático</strong></h3>
+<p>Para darmos início ao projeto é importante realizar a montagem do circuito em protoboard observando com cuidado as conexões, iremos conectar um dos terminais do resistor no <strong>GPIO 2</strong> e outro no LED externo por fim ligamos a <strong>GPIO 15</strong> no botão táctil. Abaixo segue o esquemático proposto:</p>
+<p><img alt="circuito" src="../img/0x02-entrada-digital/1.png" /></p>
+<h3 id="codigo"><strong>Código</strong></h3>
+<p>O programa desenvolvido possui uma estrutura bem simples e não é necessário acrescentar nenhuma biblioteca, apenas a manutenção dos arquivos de cabeçalho já presentes no projeto. Ao criar um novo projeto no IDF automaticamente já temos arquivos configurados e prontos para programação do dispositivo, desta forma digite e comente as linhas do seguinte código no arquivo <strong>main.c :</strong></p>
+<pre><code class="language-c">/*
+    Autor : Halysson Junior
+    Data: 31/03/21
+    Descrição:
+    Neste exemplo utilizou-se um botão táctil (entrada digital) para acionar um LED (saída digital)
+    e mostra seu estado no terminal.
+
+*/
+
+// Inclusão arquivos de cabeçalho
+
+#include &lt;stdio.h&gt;
+#include &quot;freertos/FreeRTOS.h&quot;
+#include &quot;freertos/task.h&quot;
+#include &quot;driver/gpio.h&quot;
+#include &quot;sdkconfig.h&quot;
+
+// Definições de Pinos
+#define BTN 15
+#define LED 2
+
+// Definição de habilitação (PULLUP / PULLDOWN)
+#define PULLUP
+// #define PULLDOWN (Para habilitar pulldown descomente aqui e comente -&gt; &quot; #define PULLUP &quot;)
+
+// Definições de estado lógico (caso altere para pulldown, deve-se inverter os estado lógicos)
+#define ON 1
+#define OFF 0
+
+void app_main(void){  // Main
+
+ gpio_pad_select_gpio(LED);                
+ gpio_set_direction(LED,GPIO_MODE_OUTPUT);// onfigura LED como saída digital
+
+ gpio_pad_select_gpio(BTN);  
+ gpio_set_direction(BTN,GPIO_MODE_INPUT); // Configura LED como saída digital
+
+  #ifdef PULLDOWN // Habilita pulldown
+
+   gpio_pulldown_en(BTN);
+   gpio_pullup_dis(BTN);  
+
+  #endif
+
+  #ifdef PULLUP  // Habilita pullup
+  gpio_pullup_en(BTN);
+  gpio_pulldown_dis(BTN);
+
+  #endif
+
+// Váriavel Local
+bool last_state_btn = 0; // Armazena o último estado do botão       
+
+    while (1) { // Loop
+
+    // Váriavel Local  
+     bool state_btn = gpio_get_level(BTN); // Leitura do botão
+
+      if(!state_btn &amp;&amp; !last_state_btn) {
+          gpio_set_level(LED,ON);           // Se botão for zero então ... liga LED
+          printf(&quot;LED LIGADO&quot;);             // Mostra informação no monitor &quot;LED LIGADO&quot;
+          last_state_btn = true;            // Botão pressionado
+      }
+
+      else if(state_btn &amp;&amp; last_state_btn){
+        gpio_set_level(LED,OFF);            // Senão... desliga LED
+         printf (&quot;LED DESLIGADO&quot;);          // Mostra informação no monitor &quot;LED DESLIGADO&quot;
+        last_state_btn = false;             // Botão solto
+      }
+      vTaskDelay(1/ portTICK_PERIOD_MS);    // Rotina de Delay de 1 segundo
+      fflush(stdout);                       // Descarrega os buffers de saída de dados   
+
+    }// endLoop
+
+}// endMain
+</code></pre>
+<p>Você encontra o projeto completo na documentação da Franzininho: <strong><a href="https://github.com/Franzininho/exemplos-esp-idf/tree/main/exemplos/Button">Button</a></strong></p>
+<p>Caso ainda não tenha instalado e configurado o IDF no seu computador ou tenha dúvidas sobre as ferramentas, acesse o tutorial de instalação (<a href="https://franzininho.github.io/exemplos-esp-idf/">Clique Aqui</a>).</p>
+<h3 id="compilacao"><strong>Compilação</strong></h3>
+<p>Após a codificação vamos compilar o código, mas antes selecione o <strong><em>set-target</em></strong> para ESP 32-S2:</p>
+<pre><code>idf.py set-target esp32s2
+</code></pre>
+<p>Ao final da compilação o resultado final deve ser semelhante à imagem mostrada abaixo, em caso de erros retorne os passos anteriores e revise seu código.</p>
+<p><img alt="resultado da compilação" src="../img/0x02-entrada-digital/2.png" /></p>
+<p>Após a etapa de compilação vamos enviar o código fonte para nossa placa, no editor pressione o ícone abaixo e aguarde alguns segundos para assim dar início ao programa “Button”(seta preta) e para vermos a saída de dados do nosso projeto clique no ícone no formato de monitor (seta vermelha):</p>
+<p><img alt="atalhos de compilação" src="../img/0x02-entrada-digital/3.png" /></p>
+<h2 id="resultados"><strong>Resultados</strong></h2>
+<p>Finalizando o exemplo de projeto o leitor deve ter observado que no programa Button, foram utilizadas as estruturas de condição IF / ELSE IF para interagir com o estado atual do botão, adicionou-se às uma nova label nativa para indicar as entradas digitais (GPIO_MODE_INPUT) e as funções para indicar topologia do circuito ( gpio_pullup_en()/gpio pulldown_dis()) utilizado e verificar a leitura digital no pino definido no cabeçalho do código.</p>
+<p>Abaixo segue o resultado final dos dados de saída no monitor:
+<img alt="saída monitor serial" src="../img/0x02-entrada-digital/4.png" /></p>
+<p>Abaixo segue o nosso circuito do nosso projeto:</p>
+<p><img alt="teste na bancada" src="../img/0x02-entrada-digital/5.png" /></p>
+<h2 id="conclusao"><strong>Conclusão</strong></h2>
+<p>Nesse projeto concluímos o estudo do periférico base para iniciar no mundo dos microcontroladores, pois a partir desse conhecimento adquirido podemos reciclar para as outras famílias do ESP32, como também em outros chips baseados na linguagem C para estruturar seu programa. Como mencionado na seção de Desenvolvimento, este segundo artigo deseja consolidar o conhecimento nesse periférico (GPIO), por tanto deixo o desafio de criar um contador de pulsos de 0 até 10 e reiniciado sempre quando forma maior que 10, ao final de cada contagem deve-se acionar um LED e mostrar quantas contagens já foram feitas. Desejo sorte àqueles que irão realizar o desafio e bons estudos, que a <strong>força esteja com todos nós.</strong></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/Franzininho/exemplos-esp-idf/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
