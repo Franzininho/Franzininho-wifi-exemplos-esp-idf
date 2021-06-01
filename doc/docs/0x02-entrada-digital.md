@@ -169,3 +169,8 @@ Abaixo segue o nosso circuito do nosso projeto:
 ## **Conclusão**
 
 Nesse projeto concluímos o estudo do periférico base para iniciar no mundo dos microcontroladores, pois a partir desse conhecimento adquirido podemos reciclar para as outras famílias do ESP32, como também em outros chips baseados na linguagem C para estruturar seu programa. Como mencionado na seção de Desenvolvimento, este segundo artigo deseja consolidar o conhecimento nesse periférico (GPIO), por tanto deixo o desafio de criar um contador de pulsos de 0 até 10 e reiniciado sempre quando forma maior que 10, ao final de cada contagem deve-se acionar um LED e mostrar quantas contagens já foram feitas. Desejo sorte àqueles que irão realizar o desafio e bons estudos, que a **força esteja com todos nós.**
+
+
+| Autor | [Halysson Junior](https://github.com/halyssonJr) |
+|-------|-------------|
+| Data: | 01/06/2021  |
