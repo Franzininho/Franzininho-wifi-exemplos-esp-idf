@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  
+  <title>Entrada Analógica - Franzininho WiFi - ESP-IDF</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Entrada Anal\u00f3gica";
+    var mkdocs_page_input_path = "0x03-entrada-analogica.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Franzininho WiFi - ESP-IDF</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Primeiros passos</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../0x01-Hello-world/">Hello, World!</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../0x02-entrada-digital/">Entrada digital</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Entrada Analógica</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Franzininho WiFi - ESP-IDF</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Entrada Analógica</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/Franzininho/exemplos-esp-idf/edit/master/docs/0x03-entrada-analogica.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="introducao">Introdução</h2>
+<p>Nesse exemplo vamos entender como usar o Conversor Analógico-Digital  (Analog to Digital Converter(ADC)) na Franzininho WiFi. O objetivo deste  exemplo é apresentar projeto simples para configurar o ADC, ler o valor  de uma entrada analógica controlada por um potenciômetro e imprimir o  valor da conversão através da comunicação serial. Ao final, estaremos  preparados para fazer leitura analógica simples como também para  utilização de sensores mais complexos.</p>
+<h2 id="recursos">Recursos</h2>
+<ul>
+<li>
+<p>Placa Franzininho WIFI</p>
+</li>
+<li>
+<p>Potenciômetro</p>
+</li>
+<li>
+<p>Protoboard</p>
+</li>
+<li>
+<p>Jumpers</p>
+</li>
+<li>
+<p>Computador com ESP-IDF instalado e configurado.</p>
+</li>
+</ul>
+<h2 id="desenvolvimento">Desenvolvimento</h2>
+<p>Um potenciômetro é um dispositivo analógico rotativo operado mecanicamente por meio de Um potenciômetro é um dispositivo analógico rotativo operado mecanicamente por meio de 3 terminais, ele fornece uma quantidade variável de resistência quando seu eixo é girado. Quando uma tensão é aplicada nos terminais do potenciômetro, que está conectado a uma entrada analógica, conseguimos medir uma resistência produzida pelo potenciômetro como um valor analógico.</p>
+<p><img alt="potenciometro" src="../img/0x03-entrada-analogica/1.png" /></p>
+<p>O Conversor Analogico-Digital é um dispositivo que converte um sinal analógico num sinal digital. Logo, este exemplo vem com o intuito de monitorar o estado do potenciômetro a partir de uma comunicação serial, assim podemos ter base para trabalharmos futuramente com sensores analógicos.</p>
+<p>Conecte os três fios do potenciômetro à sua placa. O primeiro fio vai de um dos pinos externos do potenciômetro para o GND. Já o segundo vai do outro pino externo do potenciômetro para 3,3 Volts. E por último, o terceiro vai do pino do meio do potenciômetro ao pino analógico GPIO1.</p>
+<p>Quando se gira o potenciômetro, altera-se a resistência, impactando diretamente no pino central do potenciômetro, portanto, muda-se a tensão. Quando o eixo é girado no sentido direito a tensão se aproxima de 3,3V, ao contrário se aproxima de 0. Essa tensão que você está lendo na entrada analógica.</p>
+<p>A Franzininho WIFI possui 20 entradas de ADC, sendo que o ADC1 possui 10 canais configurados do GPIO1 ao GPIO10, já o ADC2 possui 10 canais configurados do GPIO11 ao GPIO20. O conversor analógico-digital da ESP32-S2 que iremos utilizar possui 12bits de resolução, portanto, ele lê a tensão e a converte em um número entre 0 a 4095. A função adc1_get_raw() irá fazer a captura da quantidade de tensão aplicada ao pino do canal configurado.</p>
+<h3 id="esquematico">Esquemático</h3>
+<p><img alt="esquemático" src="../img/0x03-entrada-analogica/2.png" /></p>
+<p>Em uma protoboard, conecte os três fios do potenciômetro na Franzininho WIFI. O primeiro vai de um dos pinos externos do potenciômetro para o GND. O segundo vai do outro pino externo do potenciômetro para 3,3 volts. O terceiro vai do pino do meio do potenciômetro ao pino analógico GPIO1.</p>
+<h3 id="codigo">Código</h3>
+<pre><code class="language-c">/*
+    Autor : Kayann Soares
+    Utilização simples da Leitura de Dados Analogicos.
+*/
+
+// Bibliotecas Necessarias
+#include &lt;stdio.h&gt;
+#include &quot;sdkconfig.h&quot;
+#include &quot;freertos/FreeRTOS.h&quot;
+#include &quot;freertos/task.h&quot;
+#include &quot;esp_system.h&quot;
+#include &quot;esp_spi_flash.h&quot;
+#include &lt;driver/adc.h&gt;
+
+// Main
+void app_main(){
+
+  // Configurando a resolução do ADC para 12bits        
+  adc1_config_width(ADC_WIDTH_BIT_12);
+  // Configurando o Channel do ADC para o Channel 0
+  adc1_config_channel_atten(ADC1_CHANNEL_0,ADC_ATTEN_DB_11);
+
+
+  while(1){
+
+    // Função que de leitura do valor analogico, passando o ADC1 que é o do GPIO1
+    int sensorValue = adc1_get_raw(ADC1_CHANNEL_0);
+
+    // Imprimindo valores lidos
+    printf(&quot;%d\n&quot;, sensorValue);
+
+    // Rotina de Delay de 1 segundo
+    vTaskDelay(1000 / portTICK_PERIOD_MS);
+    // Descarrega os buffers de saída de dados
+    fflush(stdout);
+
+  }
+}
+
+
+</code></pre>
+<h3 id="compilacao">Compilação</h3>
+<p>Após a codificação vamos compilar o código, mas antes selecione o set-target para ESP 32-S2:</p>
+<pre><code>idf.py set-target esp32s2
+</code></pre>
+<p>Após a compilação vamos enviar o código fonte para nossa placa, no editor pressione o ícone de raio para dar o FLASH e aguarde alguns segundos para assim dar início ao programa</p>
+<p><img alt="compilar" src="../img/0x03-entrada-analogica/3.png" /></p>
+<p>Para vermos a saída de dados do nosso projeto clique no ícone no formato de monitor:</p>
+<p><img alt="upload" src="../img/0x03-entrada-analogica/4.png" /></p>
+<h3 id="resultados">Resultados</h3>
+<p>Valores mostrados no terminal quando o potenciômetro é rotacionado.</p>
+<p><img alt="resultado" src="../img/0x03-entrada-analogica/5.png" /></p>
+<h2 id="conclusao">Conclusão</h2>
+<p>Concluímos o estudo do periférico base para iniciar no desenvolvimento com microcontroladores da Espressif usando o Framework IDF, a partir desse artigo podemos replicar para as demais famílias do ESP32, estes conceitos podem ser levados também para trabalharmos com outros microcontroladores que utilizem C e uma programação mais abstrata. Este artigo visa no estudo do periférico ADC, ao final deste projeto é possível aprender a utilizar o ADC da Franzininho WiFi para leitura de dados analógicos e lhe dará o desafio de aplicar esse aprendizado na leitura de sensores analógicos para você aplicar em seus projetos utilizando o ESP-IDF. Bons estudos.</p>
+<table>
+<thead>
+<tr>
+<th>Autor</th>
+<th><a href="https://www.linkedin.com/in/kayann-soares/">Kayann Soares</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data:</td>
+<td>01/06/2021</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../0x02-entrada-digital/" class="btn btn-neutral" title="Entrada digital"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/Franzininho/exemplos-esp-idf/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../0x02-entrada-digital/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
