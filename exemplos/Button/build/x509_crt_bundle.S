@@ -1,4 +1,4 @@
-/* * Data converted from /home/halysson/Documents/Franzininho_WiFi/Button/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from /media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

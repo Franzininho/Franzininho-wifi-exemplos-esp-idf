@@ -1,4 +1,4 @@
-# Install script for directory: /home/halysson/esp/esp-idf/components/esp_system
+# Install script for directory: /home/fabio/esp/esp-idf/components/esp_system
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -32,9 +32,14 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "TRUE")
 endif()
 
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/home/fabio/.espressif/tools/xtensa-esp32s2-elf/esp-2020r3-8.4.0/xtensa-esp32s2-elf/bin/xtensa-esp32s2-elf-objdump")
+endif()
+
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/halysson/Documents/Franzininho_WiFi/Hello_World/build/esp-idf/esp_system/port/cmake_install.cmake")
+  include("/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Hello_World/build/esp-idf/esp_system/port/cmake_install.cmake")
 
 endif()
 

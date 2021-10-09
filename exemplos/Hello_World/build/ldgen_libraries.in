@@ -1,7 +1,7 @@
 $<TARGET_FILE:__idf_mbedtls>
 $<TARGET_FILE:__idf_efuse>
-$<TARGET_FILE:__idf_bootloader_support>
 $<TARGET_FILE:__idf_app_update>
+$<TARGET_FILE:__idf_bootloader_support>
 $<TARGET_FILE:__idf_esp_ipc>
 $<TARGET_FILE:__idf_spi_flash>
 $<TARGET_FILE:__idf_nvs_flash>
@@ -27,8 +27,7 @@ $<TARGET_FILE:__idf_esp_pm>
 $<TARGET_FILE:__idf_esp_ringbuf>
 $<TARGET_FILE:__idf_driver>
 $<TARGET_FILE:__idf_xtensa>
-$<TARGET_FILE:__idf_perfmon>
-$<TARGET_FILE:__idf_esp32>
+$<TARGET_FILE:__idf_esp32s2>
 $<TARGET_FILE:__idf_esp_common>
 $<TARGET_FILE:__idf_esp_timer>
 $<TARGET_FILE:__idf_freertos>
@@ -65,7 +64,10 @@ $<TARGET_FILE:__idf_json>
 $<TARGET_FILE:__idf_libsodium>
 $<TARGET_FILE:__idf_mqtt>
 $<TARGET_FILE:__idf_openssl>
+$<TARGET_FILE:__idf_perfmon>
 $<TARGET_FILE:__idf_spiffs>
+$<TARGET_FILE:__idf_touch_element>
 $<TARGET_FILE:__idf_ulp>
+$<TARGET_FILE:__idf_usb>
 $<TARGET_FILE:__idf_wifi_provisioning>
 $<TARGET_FILE:__idf_main>

@@ -1,13 +1,13 @@
 # Target labels
  bootloader
 # Source files and their labels
-/home/halysson/Documents/Franzininho_WiFi/Button/build/CMakeFiles/bootloader
-/home/halysson/Documents/Franzininho_WiFi/Button/build/CMakeFiles/bootloader.rule
-/home/halysson/Documents/Franzininho_WiFi/Button/build/CMakeFiles/bootloader-complete.rule
-/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
-/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
-/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
-/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
-/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
-/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
-/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/CMakeFiles/bootloader
+/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/CMakeFiles/bootloader.rule
+/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/CMakeFiles/bootloader-complete.rule
+/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

@@ -2,34 +2,34 @@
 	"sources" : 
 	[
 		{
-			"file" : "/home/halysson/Documents/Franzininho_WiFi/Button/build/CMakeFiles/bootloader"
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/CMakeFiles/bootloader"
 		},
 		{
-			"file" : "/home/halysson/Documents/Franzininho_WiFi/Button/build/CMakeFiles/bootloader.rule"
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/CMakeFiles/bootloader.rule"
 		},
 		{
-			"file" : "/home/halysson/Documents/Franzininho_WiFi/Button/build/CMakeFiles/bootloader-complete.rule"
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/CMakeFiles/bootloader-complete.rule"
 		},
 		{
-			"file" : "/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
 		},
 		{
-			"file" : "/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
 		},
 		{
-			"file" : "/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
 		},
 		{
-			"file" : "/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
 		},
 		{
-			"file" : "/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
 		},
 		{
-			"file" : "/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
 		},
 		{
-			"file" : "/home/halysson/Documents/Franzininho_WiFi/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/Button/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
 		}
 	],
 	"target" : 
