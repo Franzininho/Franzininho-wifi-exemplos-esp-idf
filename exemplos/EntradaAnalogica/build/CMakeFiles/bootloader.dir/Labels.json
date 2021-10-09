@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/EntradaAnalogica/build/CMakeFiles/bootloader"
+		},
+		{
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/EntradaAnalogica/build/CMakeFiles/bootloader.rule"
+		},
+		{
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/EntradaAnalogica/build/CMakeFiles/bootloader-complete.rule"
+		},
+		{
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/EntradaAnalogica/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+		},
+		{
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/EntradaAnalogica/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+		},
+		{
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/EntradaAnalogica/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+		},
+		{
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/EntradaAnalogica/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+		},
+		{
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/EntradaAnalogica/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+		},
+		{
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/EntradaAnalogica/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+		},
+		{
+			"file" : "/media/fabio/Dados/Projetos/exemplos-esp-idf/exemplos/EntradaAnalogica/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"bootloader"
+		],
+		"name" : "bootloader"
+	}
+}
