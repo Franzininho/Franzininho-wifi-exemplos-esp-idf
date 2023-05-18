@@ -1,0 +1,52 @@
+# Kconfig com todas configurações particulares do projeto
+menu "Configuracao - wifi (station)"
+
+    config ESP_WIFI_ST_SSID
+        string "SSID do WiFi (modo station)"
+        default "PedroBertoleti_proj"
+        help
+            Nome da rede wifi que o ESP32 deve se conectar (modo station).
+
+    config ESP_WIFI_ST_PASSWORD
+        string "Password do WiFi (modo station)"
+        default "proj12345"
+        help
+            Senha da rede wifi que o ESP32 deve se conectar (modo station).
+            
+    config ESP_WIFI_ST_GATEWAY
+        string "Endereco do gateway (modo station)"
+        default "192.168.0.1"
+        help
+            Endereco do gateway (modo station).   
+            
+    config ESP_WIFI_ST_NETWORK_MASK
+        string "Mascara de rede (modo station)"
+        default "255.255.255.0"
+        help
+            Mascara de rede (modo station).          
+
+    choice ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD
+        prompt "Minima seguranca wifi permitida"
+        default ESP_WIFI_AUTH_WPA_WPA2_PSK
+        help
+            Configuracao do minimo de seguranca permitida para conexao wifi (modo station).  
+
+        config ESP_WIFI_AUTH_OPEN
+            bool "OPEN"
+        config ESP_WIFI_AUTH_WEP
+            bool "WEP"
+        config ESP_WIFI_AUTH_WPA_PSK
+            bool "WPA PSK"
+        config ESP_WIFI_AUTH_WPA2_PSK
+            bool "WPA2 PSK"
+        config ESP_WIFI_AUTH_WPA_WPA2_PSK
+            bool "WPA/WPA2 PSK"
+        config ESP_WIFI_AUTH_WPA3_PSK
+            bool "WPA3 PSK"
+        config ESP_WIFI_AUTH_WPA2_WPA3_PSK
+            bool "WPA2/WPA3 PSK"
+        config ESP_WIFI_AUTH_WAPI_PSK
+            bool "WAPI PSK"
+    endchoice
+
+endmenu
