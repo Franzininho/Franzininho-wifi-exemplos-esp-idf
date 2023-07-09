@@ -212,16 +212,16 @@ void init_screen(lv_obj_t* init_obj)
     lv_img_set_src(franzininho_logo, &Franzininho_Logo);
     lv_obj_align(franzininho_logo, NULL, LV_ALIGN_IN_TOP_MID, 0, 0);
 
-    // init_screen_btn = lv_btn_create(init_main_bg,NULL);
-    // lv_obj_add_style(init_screen_btn,LV_BTN_PART_MAIN,&btn_style);
-    // lv_obj_align(init_screen_btn,NULL,LV_ALIGN_IN_BOTTOM_MID,0,-10);
-    // lv_btn_set_checkable(init_screen_btn,true);
-    // lv_btn_set_fit2(init_screen_btn, LV_FIT_NONE, LV_FIT_TIGHT);
-    // lv_obj_set_event_cb(init_screen_btn,button_event_cb);
+    init_screen_btn = lv_btn_create(init_main_bg,NULL);
+    lv_obj_add_style(init_screen_btn,LV_BTN_PART_MAIN,&btn_style);
+    lv_obj_align(init_screen_btn,NULL,LV_ALIGN_IN_BOTTOM_MID,0,-10);
+    lv_btn_set_checkable(init_screen_btn,true);
+    lv_btn_set_fit2(init_screen_btn, LV_FIT_NONE, LV_FIT_TIGHT);
+    lv_obj_set_event_cb(init_screen_btn,button_event_cb);
 
-    // label_btn = lv_label_create(init_screen_btn,NULL);
-    // lv_label_set_text(label_btn,"Iniciar");
-    // lv_obj_align(label_btn,NULL,LV_ALIGN_CENTER,0,0);
+    label_btn = lv_label_create(init_screen_btn,NULL);
+    lv_label_set_text(label_btn,"Iniciar");
+    lv_obj_align(label_btn,NULL,LV_ALIGN_CENTER,0,0);
 }
 
 void main_screen(lv_obj_t* main_obj)
@@ -321,45 +321,45 @@ void app_main(void)
 
     init_screen(lv_scr_act());
     vTaskDelay(pdMS_TO_TICKS(1000));
-    //trigger_btn = init_screen_btn;
-    //xEventGroupSetBits(event_screens, INIT_SC);
+    trigger_btn = init_screen_btn;
+    xEventGroupSetBits(event_screens, INIT_SC);
     while(1)
     {
-        // ux = xEventGroupGetBits(event_screens);
-        // if(ux & INIT_SC)
-        // {
-        //     lv_scr_load(current_sc);
-        //     vTaskDelay(pdMS_TO_TICKS(500));
+        ux = xEventGroupGetBits(event_screens);
+        if(ux & INIT_SC)
+        {
+            lv_scr_load(current_sc);
+            vTaskDelay(pdMS_TO_TICKS(500));
             
-        //     check_sc = INIT;
-        //     xEventGroupClearBits(event_screens, INIT_SC);
-        // }
+            check_sc = INIT;
+            xEventGroupClearBits(event_screens, INIT_SC);
+        }
 
-        // else if(ux & MAIN_SC)
-        // {
-        //     main_screen(current_sc);
-        //     lv_scr_load(current_sc);
+        else if(ux & MAIN_SC)
+        {
+            main_screen(current_sc);
+            lv_scr_load(current_sc);
 
-        //     trigger_btn = current_sc;
-        //     check_sc = MAIN;
+            trigger_btn = current_sc;
+            check_sc = MAIN;
 
-        //     vTaskDelay(pdMS_TO_TICKS(500));
-        //     xEventGroupClearBits(event_screens, MAIN_SC);
+            vTaskDelay(pdMS_TO_TICKS(500));
+            xEventGroupClearBits(event_screens, MAIN_SC);
             
-        // }
-        // else if(ux & SENSOR_SC)
-        // {
-        //     sensor_screen(current_sc);
-        //     lv_scr_load(current_sc);
+        }
+        else if(ux & SENSOR_SC)
+        {
+            sensor_screen(current_sc);
+            lv_scr_load(current_sc);
             
-        //     check_sc = SENSOR;
-        //     vTaskDelay(pdMS_TO_TICKS(500));
-        //     xEventGroupClearBits(event_screens, SENSOR_SC);
-        // } 
+            check_sc = SENSOR;
+            vTaskDelay(pdMS_TO_TICKS(500));
+            xEventGroupClearBits(event_screens, SENSOR_SC);
+        } 
 
-        // read_btn(trigger_btn);
+        read_btn(trigger_btn);
         
-        // read_ldr(meter);
+        read_ldr(meter);
         
         vTaskDelay(1);
     }
