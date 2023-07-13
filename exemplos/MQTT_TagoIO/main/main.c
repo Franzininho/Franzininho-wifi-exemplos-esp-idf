@@ -27,10 +27,12 @@
 
 #include "esp_log.h"
 #include "mqtt_client.h"
+#include "driver/temp_sensor.h"
 
 #define WIFI_SSID "seu ssid"
 #define WIFI_PASSWORD "sua senha"
 #define MQTT_TOKEN "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+#define MQTT_ID_CLIENT "Franzininho_WiFi_MQTT"
 
 #define TAG  "MQTT"
 
@@ -163,10 +165,10 @@ static void mqtt_app_start(void)
         .broker.address.uri = "mqtt://mqtt.tago.io:1883",// URI do Tago IO
         .credentials.authentication.password = MQTT_TOKEN, // Token do device
         .credentials.username = "tago", // Nome de usário
-        .credentials.client_id = "Franzininho_WiFi_MQTT" // Nome do seu device
+        .credentials.client_id = MQTT_ID_CLIENT // Nome do seu device
     };
 
-    //Cria um handle para o client
+    //Cria um handler para o client
     client = esp_mqtt_client_init(&config_mqtt);
     //Registra a função de callback para o handler do client
     esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler, client);
@@ -186,13 +188,20 @@ void app_main()
    
     nvs_flash_init(); // Inicializando o NVS
     wifi_init(); // Inicializando WiFi
+    temp_sensor_config_t temp_sensor = TSENS_CONFIG_DEFAULT();  
+    temp_sensor.dac_offset = TSENS_DAC_DEFAULT;                
+    temp_sensor_set_config(temp_sensor);
+    temp_sensor_start();
+
     vTaskDelay(pdMS_TO_TICKS(10000)); //Aguarda 10s até estabilizar a conexão com a rede
     mqtt_app_start(); //Cria o novo client e conecta-se ao broken
     
     while(1) // Loop
     {
         char msg[50];
-        sprintf(msg, "[{\"variable\": \"temperature\",\"value\": %ld}]",random()%30); // Cria uma mensagem fake para publicar no broken
+        float temp_out;                                            //temperature sensor output variable
+        temp_sensor_read_celsius(&temp_out);                      // ler a temperatura do sensor
+        sprintf(msg, "[{\"variable\": \"temperature\",\"value\": %.2f}]",temp_out); // Cria uma mensagem fake para publicar no broken
         esp_mqtt_client_publish(client, "tago/data/post", msg, 0, 1, 0);// Client envia o publish para o Broken
         vTaskDelay(pdMS_TO_TICKS(10000)); //Aguarda 10 segundo para o próximo envio.
     }
